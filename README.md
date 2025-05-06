@@ -5,6 +5,6 @@ This repository contains algorithms for problems that are popular in coding inte
 I am uploading solutions that I have developed and you can reuse this if it helps.
 
 # Contributing
-If you are interested in contributing, please reach out to bugursala@gmail.com
+If you are interested in contributing, please reach out to bgursala@gmail.com
 
 
