@@ -1,8 +1,7 @@
 # coding
-This repository contains algorithms for problems that are popular in coding interviews.
-
+This repository contains popular datastructures and algorithms.
 # Intention
-I have uploaded solutions that I have developed and you can reuse this if it helps.
+I have uploaded solutions that I have perosnally developed and you can reuse this if it helps.
 
 # Contributing
 If you are interested in contributing, please reach out to bgursala@gmail.com
