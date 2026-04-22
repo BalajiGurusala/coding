@@ -12,7 +12,7 @@ Output:
 from random import random
 
 
-def sort_array(arr):
+def sort_array_ord(arr):
     """
     Args:
      arr(list_char)
@@ -23,6 +23,7 @@ def sort_array(arr):
     arr.sort(key = ord)
     return arr
 
+'-----------------------------------------------------------------------------'
 
 '''Time Complexity: O(n log n) due to the sorting step, 
 where n is the number of characters in the array.
@@ -41,7 +42,7 @@ def sort_array_optimal(arr):
     arr.sort()
     return arr
 
-
+'-----------------------------------------------------------------------------'
 
 def lomutos_partition(arr, start, end):
     left=start
@@ -69,7 +70,7 @@ def quick_sort_helper(arr, start, end):
     quick_sort_helper(arr, split_idx+1, end)
 
 
-def sort_array(arr):
+def sort_array_quick_sort_lomutos(arr):
     """
     Args:
      arr(list_char)
@@ -80,7 +81,7 @@ def sort_array(arr):
     quick_sort_helper(arr, 0, len(arr)-1)
     return arr
 
-
+'-----------------------------------------------------------------------------'
 
 def lomutos_three_way_partition(arr, start, end):
     left=start
@@ -116,7 +117,7 @@ def quick_sort_helper_optimal(arr, start, end):
     quick_sort_helper_optimal(arr, split_idx_right, end)
 
 
-def sort_array(arr):
+def sort_array_three_way(arr):
     """
     Args:
      arr(list_char)
@@ -125,4 +126,99 @@ def sort_array(arr):
     """
     # Write your code here.
     quick_sort_helper_optimal(arr, 0, len(arr)-1)
+    return arr
+
+'-----------------------------------------------------------------------------'
+
+def hoares_partition(arr, start, end):
+    left = start-1
+    right = end+1
+    
+    while True:
+        left += 1
+        while arr[left] < arr[start]:
+            left += 1
+            
+        right -= 1
+        while arr[right] > arr[start]:
+            right -= 1
+        
+        if left >= right:
+            return right
+        
+        arr[left],arr[right] = arr[right],arr[left]
+        
+
+def quick_sort_helper_hoares(arr, start, end):
+    
+    if start >= end:
+        return
+    
+    # pivot = random.randint(start, end)
+    # arr[start], arr[pivot] = arr[pivot], arr[start]
+    
+    split_idx= hoares_partition(arr, start, end)
+    
+    quick_sort_helper_hoares(arr, start, split_idx)
+    quick_sort_helper_hoares(arr, split_idx+1, end)
+
+
+def sort_array_hoares(arr):
+    """
+    Args:
+     arr(list_char)
+    Returns:
+     list_char
+    """
+    # Write your code here.
+    quick_sort_helper_hoares(arr, 0, len(arr)-1)
+    return arr
+
+'-----------------------------------------------------------------------------'
+
+def hoares_partition_classic(arr, start, end):
+    left = start+1
+    right = end
+    
+    while left <= right:
+        while left <= right and arr[left] < arr[start]:
+            left += 1
+            
+        while left <= right and arr[right] > arr[start]:
+            right -= 1
+        
+        # if left >= right:
+        #     return right
+        if left <= right:
+            arr[left],arr[right] = arr[right],arr[left]
+            left += 1
+            right -= 1
+    
+    arr[start], arr[right] = arr[right], arr[start]
+    return right
+        
+
+def quick_sort_helper_hoares(arr, start, end):
+    
+    if start >= end:
+        return
+    
+    pivot = random.randint(start, end)
+    arr[start], arr[pivot] = arr[pivot], arr[start]
+    
+    split_idx = hoares_partition_classic(arr, start, end)
+    
+    quick_sort_helper_hoares(arr, start, split_idx-1)
+    quick_sort_helper_hoares(arr, split_idx+1, end)
+
+
+def sort_array(arr):
+    """
+    Args:
+     arr(list_char)
+    Returns:
+     list_char
+    """
+    # Write your code here.
+    quick_sort_helper_hoares(arr, 0, len(arr)-1)
     return arr

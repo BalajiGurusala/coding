@@ -54,7 +54,8 @@ def find_closest_triplet_sum(target, numbers):
     # Write your code here.
     numbers.sort()
     min = float('inf')
-    global_closest_sum = float('inf')
+    #global_closest_sum = float('inf')
+    global_closest_sum = numbers[0]+numbers[1]+numbers[2]
     n = len(numbers)
     for i in range(n-2):
         current_closest_sum = two_sum(numbers, target, i)
@@ -70,7 +71,8 @@ def two_sum(numbers, target, prev_index):
     left = prev_index+1
     right = len(numbers)-1
     local_min = float('inf')
-    local_closest_sum = float('inf')
+    #local_closest_sum = float('inf')
+    local_closest_sum = numbers[prev_index]+numbers[left]+numbers[right]
     while left < right:
         current_sum = numbers[prev_index]+numbers[left]+numbers[right]
         current_diff = abs(current_sum-target)
