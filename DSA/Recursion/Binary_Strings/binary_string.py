@@ -63,7 +63,7 @@ print(generate_binary_strings_rec_iter(3))
 
 '''Iterative approach 
 Input: generate_binary_strings_iter(3)
-Output: ["000", "0001", "010", "100", "101", "110","111"]
+Output: ["000", "001", "010", "011", "100", "101", "110","111"]
 '''
 def generate_binary_strings_iter(n):
     """
@@ -92,7 +92,7 @@ def generate_binary_strings_iter(n):
 
 print(generate_binary_strings_iter(3))
 
-from collections import deque
+# from collections import deque
 def generate_binary_strings_iterative_queue(n):
     """
     Args:

@@ -73,3 +73,33 @@ def permutationsNoRepetition_v3(n, current_string='', result=None, used=None):
     return result
 
 print(permutationsNoRepetition_v3(2))
+
+'''
+Handling Multi-Digit Numbers
+If we use current_string like above, len("1023") is 4, even though it only represents two numbers from the array [10, 23].
+The String problem: You lose the boundary between numbers. You can't tell if "1023" was [10, 2, 3] or [1, 0, 23].
+The List advantage: path = [10, 23] always has a length of 2. It preserves the "integrity" of the original data types.
+'''
+
+def permutationsNoRepetition_v4(n, slate=None, result=None, used=None):
+    if result is None:
+        result = []
+
+    if used is None:
+        used = [False] * 10
+
+    if slate is None:
+        slate = []
+
+    if n == 0:
+        result.append(''.join(map(str, slate)))
+        return result
+
+    for i in range(10):
+        if not used[i]:
+            used[i] = True
+            slate.append(i)
+            permutationsNoRepetition_v4(n-1, slate, result, used)
+            slate.pop()
+            used[i] = False
+    return result
