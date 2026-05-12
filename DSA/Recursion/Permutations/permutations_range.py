@@ -103,3 +103,51 @@ def permutationsNoRepetition_v4(n, slate=None, result=None, used=None):
             slate.pop()
             used[i] = False
     return result
+
+def permutationswithrepetition_v5(n, choices, slate=None, result=None):
+    if result is None:
+        result = []
+
+    if slate is None:
+        slate = []
+
+    if n == 0:
+        result.append(''.join(map(str, slate)))
+        return result
+
+    for i in choices:
+        slate.append(i)
+        permutationswithrepetition_v5(n-1, choices, slate, result)
+        slate.pop()
+    return result
+#print(permutationswithrepetition_v5(2, [0, 1]))
+#print(permutationswithrepetition_v5(2, range(10)))
+print(permutationswithrepetition_v5(3, [1,2,3]))
+
+def permutationsNoRepetition_v5(n, choices, slate=None, result=None, used=None):
+    if result is None:
+        result = []
+
+    if slate is None:
+        slate = []
+
+    if used is None:
+        used = [False] * len(choices)
+
+    if n == 0:
+        result.append(''.join(map(str, slate)))
+        return result
+
+    for i in range(len(choices)):
+        if not used[i]:
+            used[i] = True
+            slate.append(choices[i])
+            permutationsNoRepetition_v5(n-1, choices, slate, result, used)
+            slate.pop()
+            used[i] = False
+    return result
+#print(permutationsNoRepetition_v5(2, range(10)))
+#print(permutationsNoRepetition_v5(2, [0,1]))
+#print(permutationsNoRepetition_v5(3, [1,2,1]))
+#print(permutationsNoRepetition_v5(3, [1,2,3]))
+print(permutationsNoRepetition_v5(2, [1,2,3,4]))
