@@ -1,3 +1,9 @@
+'''
+The towers of Hanoi is a mathematical puzzle where we have three rods 
+and n disks. The objective
+of the puzzle is to move the entire stack to another rod, 
+obeying the following simple rules:
+1. Only one disk can be moved at a time.'''
 def towers_of_hanoi(n, source, target, auxiliary):
     """
     Args:

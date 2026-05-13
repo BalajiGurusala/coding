@@ -49,3 +49,9 @@ def combinations_for_loop(n, k, i, slate=None, result=None):
     return result
 
 print(combinations_for_loop([1,2,3,4], 2, 0))
+
+def combinations_iter_tools(n, k):
+    from itertools import combinations
+    return [list(c) for c in combinations(n, k)] 
+
+print(combinations_iter_tools([1,2,3,4], 2))

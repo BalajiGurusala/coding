@@ -54,3 +54,17 @@ def permutations_no_repetition_distinct_v2(array, slate=None, result=None, used=
     return result
 
 print(permutations_no_repetition_distinct_v2([1,2,3]))
+
+
+def get_permutations_unique_integers(arr):
+    """
+    Args:
+     arr(list_int32)
+    Returns:
+     list_list_int32
+    """
+    # Write your code here.
+    from itertools import permutations
+    return [list(p) for p in permutations(arr)]
+
+print(get_permutations_unique_integers([1,2,3]))
