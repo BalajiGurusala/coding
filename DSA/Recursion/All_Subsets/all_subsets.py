@@ -52,4 +52,20 @@ def print_all_subsets_duplicates(arr, idx, current_result=None, result=None):
 
 print(print_all_subsets_duplicates([2,1,2], 0))
 
+
+def generate_all_subsets_iter(s):
+    """
+    Args:
+     s(str)
+    Returns:
+     list_str
+    """
+    # Write your code here.
+    subsets = ['']
+    for i in range(len(s)):
+        for j in range(len(subsets)):
+            subsets.append(subsets[j]+s[i])
+    return subsets
+print(generate_all_subsets_iter("abc"))
+
     
