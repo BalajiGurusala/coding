@@ -83,3 +83,39 @@ print(how_many_bsts(2))
 print(how_many_bsts(3))
 print(how_many_bsts(4))
 print(how_many_bsts(5))
+
+#Using memoization to optimize the time complexity to O(n^2)
+def how_many_bsts_memo(n):
+    """
+    Args:
+     n(int32)
+    Returns:
+     int64
+    """
+    # Write your code here.
+    memo = {}
+    return bsts_helper_memo(n, memo)
+
+def bsts_helper_memo(n, memo):
+    if n in memo:
+        return memo[n]
+    
+    if n <= 1:
+        return 1
+    
+    total_bsts = 0
+    for i in range(1, n+1):
+        left_bsts = i-1
+        right_bsts = n-i
+        
+        left_comb = bsts_helper_memo(left_bsts, memo)
+        right_comb = bsts_helper_memo(right_bsts, memo)
+        
+        total_bsts += left_comb * right_comb
+    
+    memo[n] = total_bsts
+    return total_bsts
+
+print(how_many_bsts_memo(1))
+print(how_many_bsts_memo(2))
+print(how_many_bsts_memo(3))
