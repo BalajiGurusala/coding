@@ -36,3 +36,34 @@ def can_attend_all_meetings(intervals):
             print(intervals[i][1], intervals[i+1][0])
             return 0
     return 1
+
+def can_attend_all_meetings_common_pattern(intervals):
+    """
+    Args:
+     intervals(list_list_int32)
+    Returns:
+     int32
+    """
+    if not intervals:
+        return 1
+    intervals.sort(key=lambda x: x[0])
+    for i in range(len(intervals)):
+        if i == len(intervals) - 1:
+            next_start_time = float('inf')
+        else:
+            next_start_time = intervals[i+1][0]
+        
+        if intervals[i][1] > next_start_time:
+            return 0
+    return 1
+
+if __name__ == "__main__":
+    print("Can attend all meetings [1, 5], [5, 8], [10, 15]:", can_attend_all_meetings([[1, 5], [5, 8], [10, 15]]))
+    print("Can attend all meetings [1, 5], [4, 8], [10, 15]:", can_attend_all_meetings([[1, 5], [4, 8], [10, 15]])) 
+    print("Can attend all meetings [1, 5], [2, 3], [4, 6]:", can_attend_all_meetings([[1, 5], [2, 3], [4, 6]]))
+    print("Can attend all meetings [1, 5], [5, 8], [8, 10]:", can_attend_all_meetings([[1, 5], [5, 8], [8, 10]]))
+
+    print("Can attend all meetings [1, 5], [5, 8], [10, 15]:", can_attend_all_meetings_common_pattern([[1, 5], [5, 8], [10, 15]]))
+    print("Can attend all meetings [1, 5], [4, 8], [10, 15]:", can_attend_all_meetings_common_pattern([[1, 5], [4, 8], [10, 15]])) 
+    print("Can attend all meetings [1, 5], [2, 3], [4, 6]:", can_attend_all_meetings_common_pattern([[1, 5], [2, 3], [4, 6]]))
+    print("Can attend all meetings [1, 5], [5, 8], [8, 10]:", can_attend_all_meetings_common_pattern([[1, 5], [5, 8], [8, 10]]))
