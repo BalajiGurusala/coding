@@ -6,7 +6,7 @@ Input:
 Output:
 ["-1, -1, 2", "-1, 0, 1"]
 '''
-def find_zero_sum(arr):
+def find_zero_sum_v1(arr):
     """
     Args:
      arr(list_int32)
@@ -18,9 +18,8 @@ def find_zero_sum(arr):
     output = []
     n = len(arr)
     for idx in range(n-2):
-        if idx > 0:
-            if arr[idx] == arr[idx-1]:
-                continue
+        if idx > 0 and arr[idx] == arr[idx-1]:
+            continue
         left = idx+1
         right = n-1
         new_target = 0 - arr[idx]
@@ -40,7 +39,7 @@ def find_zero_sum(arr):
                 right -= 1
     return output
 
-def find_zero_sum(arr):
+def find_zero_sum_v2(arr):
     """
     Args:
      arr(list_int32)
@@ -73,3 +72,15 @@ def twoSum(arr, i, target, results):
             j -= 1
             while i<j and arr[i] == arr[i-1]:
                 i += 1
+
+    return
+
+if __name__ == "__main__":
+    arr = [-1, 0, 1, 2, -1, -4]
+    print(find_zero_sum_v1(arr))   
+    print(find_zero_sum_v2(arr))
+
+    arr = [0, 0, 0, 0]
+    print(find_zero_sum_v1  (arr))
+    print(find_zero_sum_v2(arr))
+

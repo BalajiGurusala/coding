@@ -132,3 +132,10 @@ def twoSum(arr, i, j, low, target, results):
             high -= 1
             while low < high and arr[low] == arr[low-1]:
                 low += 1
+
+    return
+
+if __name__ == "__main__":
+    arr = [1, 0, -1, 0, -2, 2]
+    target = 0
+    print(four_sum_simplified(arr, target))

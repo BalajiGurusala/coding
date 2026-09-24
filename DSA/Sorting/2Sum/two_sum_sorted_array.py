@@ -66,16 +66,16 @@ def pair_sum_sorted_array_binary_search(numbers, target):
     """
     # Write your code here.
     def binary_search(numbers, target, start, end):
-        if end >= start:
-            mid = (end + start)//2
-            if numbers[mid] == target:
-                return (True, mid)
-            elif target > numbers[mid]:
-                return binary_search(numbers, target, mid+1, end)
-            else:
-                return binary_search(numbers, target, start, mid-1)
+        if start > end:
+            return (False, -1)
         
-        return [False, -1]
+        mid = (end + start)//2
+        if numbers[mid] == target:
+            return (True, mid)
+        elif target > numbers[mid]:
+            return binary_search(numbers, target, mid+1, end)
+        else:
+            return binary_search(numbers, target, start, mid-1)
     
     for idx, num in enumerate(numbers):
         new_target = target - num
@@ -83,3 +83,22 @@ def pair_sum_sorted_array_binary_search(numbers, target):
         if found:
             return [idx, idx2]
     return[-1, -1]
+
+if __name__ == "__main__":
+    numbers = [1, 2, 3, 5, 10]
+    target = 7
+    print(pair_sum_sorted_array_two_pointer(numbers, target))
+    print(pair_sum_sorted_array_dict(numbers, target))
+    print(pair_sum_sorted_array_binary_search(numbers, target))
+
+    numbers = [1, 2, 3, 4, 5]
+    target = 9
+    print(pair_sum_sorted_array_two_pointer(numbers, target))
+    print(pair_sum_sorted_array_dict(numbers, target))
+    print(pair_sum_sorted_array_binary_search(numbers, target))
+
+    numbers = [1, 2, 3, 4, 5]
+    target = 10
+    print(pair_sum_sorted_array_two_pointer(numbers, target))
+    print(pair_sum_sorted_array_dict(numbers, target))
+    print(pair_sum_sorted_array_binary_search(numbers, target))

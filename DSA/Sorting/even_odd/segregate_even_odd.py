@@ -53,3 +53,30 @@ def segregate_evens_and_odds_optimal(numbers):
             numbers[even], numbers[odd] = numbers[odd],numbers[even]
             odd -= 1
     return numbers
+
+
+'''
+Time Complexity: O(n) where n is the number of elements in the input array.
+Space Complexity: O(1) as we are doing the segregation in place without using any extra 
+space.
+'''
+def segregate_evens_and_odds_lomutos(numbers):
+    even = -1
+    odd = 0
+    while odd < len(numbers):
+        if numbers[odd] % 2 == 0:
+            even += 1
+            numbers[even], numbers[odd] = numbers[odd], numbers[even]
+        odd += 1
+    return numbers
+
+if __name__ == "__main__":
+    numbers = [1, 2, 3, 4, 5, 6]
+    print(segregate_evens_and_odds(numbers))
+
+    numbers = [1, 2, 3, 4, 5, 6]
+    print(segregate_evens_and_odds_optimal(numbers))
+
+    numbers = [1, 2, 3, 4, 5, 6]
+    print(segregate_evens_and_odds_lomutos(numbers))
+

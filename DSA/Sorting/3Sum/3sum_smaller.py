@@ -11,7 +11,8 @@ Input:
 Output:
 2
 explanation:
-{numbers[1], numbers[2], numbers[3]} and {numbers[1], numbers[2], numbers[4]} are the triplets having sum less than 4.
+{numbers[1], numbers[2], numbers[3]} and {numbers[1], numbers[2], numbers[4]} 
+are the triplets having sum less than 4. so count is 2.
 
 Input:
 {
@@ -26,6 +27,13 @@ explanation:
 {numbers[0], numbers[1], numbers[3]},
  {numbers[0], numbers[2], numbers[3]}
  and {numbers[1], numbers[2], numbers[3]} are the triplets having sum less than 7.
+ so count is 4.
+'''
+
+'''
+ time complexity and space complexity:
+    - Time complexity: O(n^2) in the worst case, where n is the number of elements in 'numbers'.
+    - Space complexity: O(1) additional space. constant auxiliary space (if sorted in place).
 '''
 def two_sum(numbers, target, start):
     ret = 0
@@ -56,3 +64,12 @@ def count_triplets(target, numbers):
         ret = two_sum(numbers, new_target, idx+1)
         result += ret
     return result
+
+if __name__ == "__main__":
+    target = 4
+    numbers = [5, 0, -1, 3, 2]
+    print(count_triplets(target, numbers))
+
+    target = 7
+    numbers = [2, 2, 2, 1]
+    print(count_triplets(target, numbers))
