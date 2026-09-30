@@ -8,6 +8,7 @@ Output: [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 Time Complexity: O(n * 2^n)
 The function is O(n * 2^n) because there are 2^n subsets and generating each subset takes O(n) time.
 Space Complexity: O(1) (excluding the space for the output)
+Output space complexity is O(2^n) for storing all subsets.
 '''
 from random import choice
 

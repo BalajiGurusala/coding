@@ -90,7 +90,9 @@ def four_sum_pruning(arr, target):
             continue
             
         # Optimization: Pruning
+        #First four elements exceed the target, no need to continue
         if arr[i] + arr[i+1] + arr[i+2] + arr[i+3] > target: break
+        #Current element and Last three elements are smaller than the target, skip this iteration
         if arr[i] + arr[n-3] + arr[n-2] + arr[n-1] < target: continue
 
         three_sum(i + 1, target - arr[i], arr[i])

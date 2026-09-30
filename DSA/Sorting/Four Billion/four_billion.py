@@ -1,5 +1,5 @@
-'''Given four billion of 32-bit integers, return any one that’s not among them. 
-Assume you have 1 GiB (10243 bytes) of memory.
+'''Given four billion of 32-bit integers, return any one that’s not among them (not present). 
+Assume you have 1 GiB (1024 * 1024 * 1024 bytes) of memory.
 Follow up: what if you only have 10 MiB of memory?
 Input:
 {
@@ -35,7 +35,7 @@ def find_integer_2pow_32(arr):
         if byte_var != 0xFF: #0XFF is all bits set in the byte. which means all the numbers for that byte index are present
             for bit in range(8):
                 if not (byte_var & (1 << bit)):
-                    missing_num = (idx << 3) | bit #idx << 3 gives byte index and | with (bit) sets the bit
+                    missing_num = (idx << 3) | bit #idx << 3 gives number and | with (bit) sets the bit
                     return missing_num
     return None
 

@@ -18,6 +18,17 @@ def median(arr):
     else:
         return (arr[n // 2 - 1] + arr[n // 2]) / 2
 
+#decrease and conquer
+def median_decrease_and_conquer(arr):
+    n = len(arr)
+    if n == 0:
+        return None
+    if n == 1:
+        return arr[0]
+    if n == 2:
+        return (arr[0] + arr[1]) / 2
+    arr.sort()
+    return median_decrease_and_conquer(arr[1:-1])
 
 if __name__ == "__main__":
     import doctest

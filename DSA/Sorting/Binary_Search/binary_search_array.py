@@ -14,6 +14,7 @@ def binary_search(arr, target):
     return -1
 
 def binary_search_recursive(arr, target, left, right):
+    
     if left > right:
         return -1
     
